@@ -1,0 +1,15 @@
+INDEX VERSION 1.134
+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2084666629.index
+\uploadfile2\src\main\java
+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\935568407.index
+\MyProject\src\main\java
+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\57642020.index
+\uploadfile\src\main\java
+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1160819248.index
+\TestKT\src\main\java
+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4114514053.index
+\Project\src\main\java
+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1730150696.index
+\MyProject\src\main\java
+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1640955502.index
+\MyProject\src\main\java

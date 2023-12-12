@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;uploadfile2/src/main/java/ProductDAO.java&apos; to &apos;dao&apos;" description="Rename resource &apos;ProductDAO.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/java/ProductDAO.java" name="dao" stamp="1701583474587" updateReferences="true"/>
+</session>

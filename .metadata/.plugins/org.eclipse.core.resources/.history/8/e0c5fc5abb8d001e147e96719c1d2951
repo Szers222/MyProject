@@ -1,0 +1,82 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+/**
+ * Servlet implementation class CartServlet
+ */
+public class CartServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CartServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String id = request.getParameter("id");
+		String action = request.getParameter("action");
+		HttpSession session = request.getSession();
+
+		// Kiểm tra xem session có mới tạo không
+		if (session.isNew()) {
+		    HashMap<String, Integer> cart = new HashMap<>();
+		    cart.put(id, 1);
+		    session.setAttribute("cart", cart);
+		} else {
+		    HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
+		    if (cart == null) {
+		        cart = new HashMap<>();
+		    }
+
+		    if (action != null && action.equals("remove")) {
+		        // Check if the product is in the cart
+		        if (cart.containsKey(id)) {
+		            // If the quantity is greater than 1, decrement the quantity
+		            int quantity = cart.get(id);
+		            if (quantity > 1) {
+		                cart.put(id, quantity - 1);
+		            } else {
+		                // If the quantity is 1, remove the product from the cart
+		                cart.remove(id);
+		            }
+		            session.setAttribute("cart", cart);
+		        }
+		    } else {
+		        // Thêm sản phẩm vào giỏ hàng nếu action không phải là "remove"
+		        if (cart.containsKey(id)) {
+		            cart.replace(id, cart.get(id) + 1);
+		        } else {
+		            cart.put(id, 1);
+		        }
+		        session.setAttribute("cart", cart);
+		    }
+		}
+
+		response.sendRedirect("cart.jsp");
+	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

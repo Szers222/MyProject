@@ -1,0 +1,11 @@
+#Fri Nov 17 09:20:16 ICT 2023
+a=finishWizard
+c=0
+cl=org.eclipse.wst.command.internal.env.ui.widgets.DynamicWizard
+cmp=usage
+ct=jbt
+d=1700187616557
+l=Wizard class name
+s=2
+v=2.3.100
+vl=How many times the 'Finish' button pressed during the day

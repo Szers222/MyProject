@@ -1,0 +1,133 @@
+package core;
+
+public class Watch {
+	//fields
+	private String watchName,  watchDescription,watchImage;
+	private int watchPrice,watchId,watchCategoryId;
+	//Properties
+	public String getWatchName() {
+		return watchName;
+	}
+
+
+
+	public void setWatchName(String watchName) {
+		this.watchName = watchName;
+	}
+
+
+
+	public String getWatchDescription() {
+		return watchDescription;
+	}
+
+
+
+	public void setWatchDescription(String watchDescription) {
+		this.watchDescription = watchDescription;
+	}
+
+
+
+	public String getWatchImage() {
+		return watchImage;
+	}
+
+
+
+	public void setWatchImage(String watchImage) {
+		this.watchImage = watchImage;
+	}
+
+
+
+	public int getWatchPrice() {
+		return watchPrice;
+	}
+
+
+
+	public void setWatchPrice(int watchPrice) {
+		this.watchPrice = watchPrice;
+	}
+
+
+
+	public int getWatchId() {
+		return watchId;
+	}
+
+
+
+	public void setWatchId(int watchId) {
+		this.watchId = watchId;
+	}
+
+
+
+	public int getwatchCategoryId() {
+		return watchCategoryId;
+	}
+
+
+
+	public void setwatchCategoryId(int watchCategoryId) {
+		this.watchCategoryId = watchCategoryId;
+	}
+	//Constructor
+
+
+
+	public Watch(int watchId, String watchName, int watchPrice, String watchDescription, String watchImage,
+			int watchCategoryId) {
+		super();
+		this.watchId = watchId;
+		this.watchName = watchName;
+		this.watchPrice = watchPrice;
+		this.watchDescription = watchDescription;
+		this.watchImage = watchImage;
+		this.watchCategoryId = watchCategoryId;
+	}
+	public Watch( String watchName, int watchPrice, String watchDescription, String watchImage,
+			int watchCategoryId) {
+		super();
+		this.watchName = watchName;
+		this.watchPrice = watchPrice;
+		this.watchDescription = watchDescription;
+		this.watchImage = watchImage;
+		this.watchCategoryId = watchCategoryId;
+	}
+
+
+	//method
+	@Override
+	public String toString() {
+		return "Watch [watchId=" + watchId + ", watchName=" + watchName + ", watchDescription=" + watchDescription
+				+ ", watchImage=" + watchImage + ", watchPrice=" + watchPrice + ", watchCategoryId=" + watchCategoryId
+				+ "]";
+	}
+	
+	public static void main(String[] args) {
+		int so = 121;
+		
+		
+		int tram = so/100;
+		int chuc = so%100/10;
+		int donvi = so%10;
+		
+		System.err.println(chuc);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

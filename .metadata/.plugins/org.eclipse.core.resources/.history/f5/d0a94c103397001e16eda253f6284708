@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<%@page import="core.Category"%>
+<%@page import="core.Product"%>
+<%@page import="java.util.ArrayList"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="en">
+<head>
+    <!-- Include necessary meta tags, stylesheets, and scripts -->
+    <!-- ... -->
+
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Category Management -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Manage Categories</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Your existing category management code here -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Product Management -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Manage Products</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Placeholder for product management -->
+                        <!-- You can use a similar structure as your category management -->
+                        <!-- Add, edit, and delete functionality for products -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add your modal forms for category and product management -->
+    <!-- ... -->
+
+    <!-- Include necessary scripts -->
+    <!-- ... -->
+
+    <!-- Your existing script for checkbox handling and modals -->
+    <!-- ... -->
+</body>
+</html>
