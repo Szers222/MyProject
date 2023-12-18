@@ -1,0 +1,92 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import core.Category;
+import core.Watch;
+import dao.WatchDAO;
+
+/**
+ * Servlet implementation class CartServlet
+ */
+public class CartServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CartServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		  String action = request.getParameter("action");
+
+		    if (action != null && action.equals("updateQuantity")) {
+		        String id = request.getParameter("id");
+		        String quantity = request.getParameter("quantity");
+
+		        try {
+		            int watchId = Integer.parseInt(id);
+		            int newQuantity = Integer.parseInt(quantity);
+
+		            HttpSession session = request.getSession();
+		            ArrayList<Watch> cart = (ArrayList<Watch>) session.getAttribute("cart");
+
+		            if (cart != null) {
+		                for (Watch watch : cart) {
+		                    if (watch.getWatchId() == watchId) {
+		                        watch.setQuantity(newQuantity);
+		                        watch.setTotal(watch.getWatchPrice() * newQuantity);
+		                        break;
+		                    }
+		                }
+
+		                double totalAll = 0;
+		                for (Watch watch : cart) {
+		                    totalAll += watch.getTotal();
+		                }
+
+		                session.setAttribute("cart", cart);
+		                session.setAttribute("getTotalAll", totalAll);
+		                response.getWriter().write("Success");
+		            } else {
+		                response.getWriter().write("Error");
+		            }
+		        } catch (NumberFormatException e) {
+		            e.printStackTrace();
+		            response.getWriter().write("Error");
+		        }
+		    }
+	}
+
+}

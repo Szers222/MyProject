@@ -52,7 +52,10 @@ public class AddCategoryServlet extends HttpServlet {
 			status = CategoryDAO.insertCategory(newCategory);
 			ArrayList<Category> listCategory = CategoryDAO.getAllCategory();
 			request.setAttribute("listCategory", listCategory);
-			request.getRequestDispatcher("categorymanagement.jsp").forward(request, response);
+			response.sendRedirect("CategoriesServlet");
+		}
+		else {
+			
 		}
 	}
 }

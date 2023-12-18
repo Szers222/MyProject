@@ -1,0 +1,103 @@
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="core.Watch"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Thank You for Your Purchase</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+        h2 {
+            color: #007bff;
+        }
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+        .table-bordered thead th, .table-bordered thead td {
+            border-bottom-width: 2px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .lead {
+            font-size: 24px;
+            color: #28a745;
+        }
+        .btn-primary {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+        .btn-primary:hover {
+            background-color: #138496;
+            border-color: #138496;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="mb-4">Thank You for Your Purchase!</h2>
+
+            <p>Your order has been successfully processed.</p>
+
+            <!-- Hiển thị thông tin đơn hàng (nếu cần) -->
+            <c:if test="${not empty watchList}">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${watchList}" var="item">
+                            <tr>
+                                <td>${item.watchName}</td>
+                                <td>${item.watchPrice}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.total}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                <p class="lead">Total Price: ${totalAll}$</p>
+            </c:if>
+
+            <p>Thank you for shopping with us!</p>
+
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

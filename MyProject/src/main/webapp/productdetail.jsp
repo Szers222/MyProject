@@ -28,33 +28,23 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap"
 	rel="stylesheet">
-
-<!-- script
-    ================================================== -->
 <script src="js/modernizr.js"></script>
 </head>
-
 <body data-bs-spy="scroll" data-bs-target="#navbar"
 	data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
 	tabindex="0">
-
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="search" xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 32 32">
-        <title>Search</title>
-        <path fill="currentColor"
-			d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="user"
-			viewBox="0 0 16 16">
+      
+    <a href="login.jsp">  <symbol xmlns="http://www.w3.org/2000/svg"
+				id="user" viewBox="0 0 16 16">
         <path
-			d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="cart"
-			viewBox="0 0 16 16">
+				d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+      </symbol></a>
+      <a><symbol xmlns="http://www.w3.org/2000/svg" id="cart"
+				viewBox="0 0 16 16">
         <path
-			d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-      </symbol>
+				d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </symbol>0</a>
       <svg xmlns="http://www.w3.org/2000/svg" id="chevron-left"
 			viewBox="0 0 16 16">
         <path fill-rule="evenodd"
@@ -152,31 +142,74 @@
 			d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
       </symbol>
     </svg>
+	<header id="header"
+		class="site-header header-scrolled position-fixed text-black bg-light">
+		<nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3" style="
+    font-size: 15px;
+    margin: 0px 10px;
+    padding: 1px;
+">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.jsp"> <img
+					src="images/main-logo.png" class="logo">
+				</a>
 
-	<div class="search-popup">
-		<div class="search-popup-container">
+				<div class="offcanvas-body">
+					<ul id="navbar"
+						class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+						<li class="nav-item"><a class="nav-link me-4 active"
+							href="ShowAllProductServlet">Home</a></li>
+						<ul class="dropdown-menu">
+							</li>
+						</ul>
+						</li>
+						<li class="nav-item">
+						<li class="nav-item dropdown">
+							<ul class="dropdown-menu">
 
-			<form role="search" method="get" class="search-form"
-				action="SearchServlet">
-				<input type="search" id="search-form" class="search-field"
-					placeholder="Type and press enter" value="" name="search" />
-				<button type="submit" class="search-submit">
-					<svg class="search">
-						<use xlink:href="#search"></use></svg>
-				</button>
-			</form>
+								<% ArrayList<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
+									String name = (String) session.getAttribute("username");
+									%>
+								<c:forEach items="${listCategory }" var="item">
+									<li><a href="ShowAllProductServlet?id=${item.idCatogery}"
+										class="dropdown-item">${item.nameCategory}</a></li>
+								</c:forEach>
+								<li><a href="shop.html" class="dropdown-item"></a></li>
+							</ul></li>
+						<li class="nav-item">
+							<div class="user-items ps-5">
+								<ul class="d-flex justify-content-end list-unstyled">
 
-			<h5 class="cat-list-title">Browse Categories</h5>
+									<li><a href="cart.jsp"><svg class="cart">
+                            <use xlink:href="#cart"></use>
+                            <% Integer sizeAt = (Integer) session.getAttribute("size") ;  
+                            int size = (sizeAt != null) ? sizeAt : 0;                           
+                            %>
+                       
+                          </svg><span style="font-size: 15px">(<%= size %>)</span> </a></li>
+									<% //String username = (String) session.getAttribute("username");
+							if(name != null)	{                          
+                          %>
+									<a class="btn btn-primary" href="#"
+										style="padding: 5px; margin: 0 25px"> hello <%= name %>
+									</a>
+									<a class="btn btn-primary" href="LogoutServlet">Logout</a>
+									<% }else{ %>
+									<li class="pe-3" style="margin-left: 15px;"><a
+										href="login.jsp?status=3"> <svg class="user">
+                            <use xlink:href="#user"></use>
+                          </svg>
+									</a></li>
+									<% }%>
 
-			<ul class="cat-list">
-				<li class="cat-list-item"><a href="#" title="Mobile Phones">Mobile
-						Phones</a></li>
-
-			</ul>
-
-		</div>
-	</div>
-	<%@ include file="header.jsp" %>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
 <% Watch watch = (Watch) request.getAttribute("watch"); %>
 	<div class="container padding-large">
 		<div class="row gx-5">
@@ -184,10 +217,10 @@
 				<div class="border rounded-4 mb-3 d-flex justify-content-center">
 					<a data-fslightbox="mygalley" class="rounded-4" target="_blank"
 						data-type="image"
-						href="./images/insta-item4.jpg">
+						href="./images/insta-item4.jpg">	
 						<img style="max-width: 100%; max-height: 100vh; margin: auto;"
 						class="rounded-4 fit"
-						src="./images/${watch.watchImage}" />
+						src="data:image/jpg;base64,${watch.base64Image}" />
 					</a>
 				</div>
 				<!-- thumbs-wrap.// -->
@@ -208,49 +241,28 @@
 					</div>
 
 					<div class="mb-3">
-						<span class="h5">$${watch.watchPrice }</span>
+						<span class="h5">Price: $${watch.watchPrice }</span>
+					</div>
+					<div class="mb-3">
+						<span class="h5">Description: <p>${watch.watchDescription}</p></span>
 					</div>
 
-					<p>${watch.watchDescription}</p>
-					<p>${watch.quantity}</p>
 					
-					<hr />
-
-					<div class="row mb-4">
-						<div class="col-md-4 col-6">
-							<label class="mb-2">Size</label> <select
-								class="form-select border border-secondary"
-								style="height: 35px;">
-								<option>Small</option>
-								<option>Medium</option>
-								<option>Large</option>
-							</select>
-						</div>
-						<!-- col.// -->
-						<div class="col-md-4 col-6 mb-3">
-							<label class="mb-2 d-block">Quantity</label>
-							<div class="input-group mb-3" style="width: 170px;">
-
-								<input type="number"
-									class="form-control text-center border border-secondary"
-									placeholder="0" aria-label="Example text with button addon"
-									aria-describedby="button-addon1" />
-
-							</div>
-						</div>
+					
+					<hr/>
+					<% String username = (String) session.getAttribute("username"); %>
 					</div>
-					<a href="#" class="btn btn-warning shadow-0"> Buy now </a> <a
-						href="#" class="btn btn-primary shadow-0"> <i
+					<a href="${username != null ? 'checkout.jsp' : 'login.jsp'}" class="btn btn-warning shadow-0"> Buy now </a> 
+					<a
+						href="CartServlet?id=${watch.watchId}" class="btn btn-primary shadow-0"> <i
 						class="me-1 fa fa-shopping-basket"></i> Add to cart
-					</a> <a href="#"
-						class="btn btn-light border border-secondary py-2 icon-hover px-3">
-						<i class="me-1 fa fa-heart fa-lg"></i> Save
-					</a>
+					</a> 
 				</div>
 			</main>
 		</div>
 	</div>
-	</section>
+	<div id="rTabs" class="r-tabs">
+</div>
 
 	<%@ include file="footer.jsp"%>
 	<script src="js/jquery-1.11.0.min.js"></script>

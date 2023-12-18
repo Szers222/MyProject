@@ -34,7 +34,9 @@ public class LogoutServlet extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			session.invalidate();
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			int status = -1 ;
+			request.setAttribute("status", status);
+			request.getRequestDispatcher("ShowAllProductServlet").forward(request, response);
 		} catch (Exception e) {
 			System.err.println("Error Logout" + e);
 		}

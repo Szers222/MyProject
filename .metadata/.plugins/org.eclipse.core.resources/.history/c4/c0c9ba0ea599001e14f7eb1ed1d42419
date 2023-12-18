@@ -1,0 +1,29 @@
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Order implements Serializable {
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String address;
+    private String creditCard;
+    private ArrayList<Watch> cart;
+
+    // Constructors, getters, setters...
+
+    public void setCart(ArrayList<Watch> cart) {
+        this.cart = cart;
+    }
+
+    public ArrayList<Watch> getCart() {
+        return cart;
+    }
+
+    public double getTotal() {
+        double total = 0;
+        for (Watch item : cart) {
+            total += item.getTotal();
+        }
+        return total;
+    }
+}

@@ -1,3 +1,4 @@
+
 <%@page import="dao.WatchDAO"%>
 <%@page import="com.mysql.cj.x.protobuf.MysqlxDatatypes.Array"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -33,7 +34,7 @@
 	data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
 	tabindex="0">
 
-	
+
 
 	<div class="search-popup">
 		<div class="search-popup-container">
@@ -47,33 +48,24 @@
 						<use xlink:href="#search"></use></svg>
 				</button>
 			</form>
-
-			<h5 class="cat-list-title">Browse Categories</h5>
-
-			<ul class="cat-list">
-				<li class="cat-list-item"><a href="#" title="Mobile Phones">Mobile
-						Phones</a></li>
-
-			</ul>
-
 		</div>
 	</div>
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="search" xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 32 32">
         <title>Search</title>
         <path fill="currentColor"
 			d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
       </symbol>
-    <a href="login.jsp">  <symbol xmlns="http://www.w3.org/2000/svg" id="user"
-			viewBox="0 0 16 16">
+    <a href="login.jsp">  <symbol xmlns="http://www.w3.org/2000/svg"
+				id="user" viewBox="0 0 16 16">
         <path
-			d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+				d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
       </symbol></a>
       <a><symbol xmlns="http://www.w3.org/2000/svg" id="cart"
-			viewBox="0 0 16 16">
+				viewBox="0 0 16 16">
         <path
-			d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+				d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
       </symbol>0</a>
       <svg xmlns="http://www.w3.org/2000/svg" id="chevron-left"
 			viewBox="0 0 16 16">
@@ -174,88 +166,80 @@
     </svg>
 	<header id="header"
 		class="site-header header-scrolled position-fixed text-black bg-light">
-		<nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+		<nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3" style="
+    font-size: 15px;
+    margin: 0px 10px;
+    padding: 1px;
+">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html"> <img
+				<a class="navbar-brand" href="index.jsp"> <img
 					src="images/main-logo.png" class="logo">
 				</a>
-				<button class="navbar-toggler d-flex d-lg-none order-3 p-2"
-					type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
-					aria-controls="bdNavbar" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<svg class="navbar-icon">
-              <use xlink:href="#navbar-icon"></use>
-            </svg>
-				</button>
-				<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
-					aria-labelledby="bdNavbarOffcanvasLabel">
-					<div class="offcanvas-header px-4 pb-0">
-						<a class="navbar-brand" href="index.html"> <img
-							src="images/main-logo.png" class="logo">
-						</a>
-						<button type="button" class="btn-close btn-close-black"
-							data-bs-dismiss="offcanvas" aria-label="Close"
-							data-bs-target="#bdNavbar"></button>
-					</div>
-					<div class="offcanvas-body">
-						<ul id="navbar"
-							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-							<li class="nav-item"><a class="nav-link me-4 active"
-								href="ShowAllProductServlet">Home</a></li>
-							<li class="nav-item"><a class="nav-link me-4"
-								href="#latest-blog">Products</a></li>
-							<ul class="dropdown-menu">
-								</li>
-							</ul>
-							</li>
-							<li class="nav-item">
-							<li class="nav-item dropdown"><a
-								class="nav-link me-4 dropdown-toggle link-dark"
-								data-bs-toggle="dropdown" href="#" role="button"
-								aria-expanded="false">Categories</a>
-								<ul class="dropdown-menu">
 
-									<% ArrayList<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
-									String name = (String) session.getAttribute("username");
-									%>
-									<c:forEach items="${listCategory }" var="item">
-										<li><a href="ShowAllProductServlet?id=${item.idCatogery}"
-											class="dropdown-item">${item.nameCategory}</a></li>
-									</c:forEach>
-									<li><a href="shop.html" class="dropdown-item"></a></li>
-								</ul></li>
-							<li class="nav-item">
-								<div class="user-items ps-5">
-									<ul class="d-flex justify-content-end list-unstyled">
-										<li class="search-item pe-3"><a href="#"
-											class="search-button"> <svg class="search">
-                            <use xlink:href="#search"></use>
-                          </svg>
-										</a></li>
-										
-										<li><a href="cart.jsp"><svg class="cart">
-                            <use xlink:href="#cart"></use>
-                          </svg><span style="font-size: 13px">(10)</span>
-                          </a></li>
-                          <% //String username = (String) session.getAttribute("username");
-							if(name != null)	{                          
-                          %>
-										<a class="btn btn-primary" href="#" style="padding: 5px;margin: 0 25px" > hello <%= name %>  </a>
-										<a class="btn btn-primary" href="LogoutServlet" >Logout</a>
-									<% }else{ %>
-								<li class="pe-3" style="margin-left: 15px;"><a href="login.jsp"> <svg class="user">
-                            <use xlink:href="#user"></use>
-                          </svg>		
-                          </a></li>
-						<% }%>
-							
-									</ul>
-								</div>
+				<div class="offcanvas-body">
+					<ul id="navbar"
+						class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+						<li class="nav-item"><a class="nav-link me-4 active"
+							href="ShowAllProductServlet">Home</a></li>
+						<li class="nav-item"><a class="nav-link me-4"
+							href="#latest-blog">Products</a></li>
+						<ul class="dropdown-menu">
 							</li>
 						</ul>
-					</div>
+						</li>
+						<li class="nav-item">
+						<li class="nav-item dropdown"><a
+							class="nav-link me-4 dropdown-toggle link-dark"
+							data-bs-toggle="dropdown" href="#" role="button"
+							aria-expanded="false">Categories</a>
+							<ul class="dropdown-menu">
+
+								<% ArrayList<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
+									String name = (String) session.getAttribute("username");
+									%>
+								<c:forEach items="${listCategory }" var="item">
+									<li><a href="ShowAllProductServlet?id=${item.idCatogery}"
+										class="dropdown-item">${item.nameCategory}</a></li>
+								</c:forEach>
+								<li><a href="shop.html" class="dropdown-item"></a></li>
+							</ul></li>
+						<li class="nav-item">
+							<div class="user-items ps-5">
+								<ul class="d-flex justify-content-end list-unstyled">
+									<li class="search-item pe-3"><a href="#"
+										class="search-button"> <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+									</a></li>
+
+									<li><a href="cart.jsp"><svg class="cart">
+                            <use xlink:href="#cart"></use>
+                            <% Integer sizeAt = (Integer) session.getAttribute("size") ;  
+                            int size = (sizeAt != null) ? sizeAt : 0;                           
+                            %>
+                       
+                          </svg><span style="font-size: 15px">(<%= size %>)</span> </a></li>
+									<% //String username = (String) session.getAttribute("username");
+							if(name != null)	{                          
+                          %>
+									<a class="btn btn-primary" href="#"
+										style="padding: 5px; margin: 0 25px"> hello <%= name %>
+									</a>
+									<a class="btn btn-primary" href="LogoutServlet">Logout</a>
+									<% }else{ %>
+									<li class="pe-3" style="margin-left: 15px;"><a
+										href="login.jsp?status=3"> <svg class="user">
+                            <use xlink:href="#user"></use>
+                          </svg>
+									</a></li>
+									<% }%>
+
+								</ul>
+							</div>
+						</li>
+					</ul>
 				</div>
+			</div>
 			</div>
 		</nav>
 	</header>
-

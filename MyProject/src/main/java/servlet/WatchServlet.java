@@ -32,8 +32,16 @@ public class WatchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		ArrayList<Watch> listWatch = WatchDAO.getAllWatch();
+		int currentPage = 1;
+		
+		String pageParameter = request.getParameter("page");
+		int cpage = (pageParameter != null && !pageParameter.isEmpty()) ? Integer.parseInt(pageParameter) : 1;
+		int perPage = 5;
+		ArrayList<Watch> listWatch = new ArrayList<>();
+		
+		listWatch = WatchDAO.getAllProducts(cpage, perPage);
+
+		request.setAttribute("perPage", perPage);
 		request.setAttribute("listWatch", listWatch);
 		request.getRequestDispatcher("watchmanagement.jsp").forward(request, response);
 	}

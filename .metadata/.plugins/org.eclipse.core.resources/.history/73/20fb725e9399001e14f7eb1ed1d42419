@@ -1,0 +1,55 @@
+<%@page import="core.Watch"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You for Your Purchase</title>
+    <!-- Thêm các thẻ meta, link, hoặc các tài nguyên khác nếu cần -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h2 class="mb-4">Thank You for Your Purchase!</h2>
+            <p>Your order has been successfully processed.</p>
+            <p>Order details:</p>
+
+            <!-- Hiển thị thông tin đơn hàng (nếu cần) -->
+            <c:if test="${not empty watchList}">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${watchList}" var="item">
+                            <tr>
+                                <td>${item.watchName}</td>
+                                <td>${item.watchPrice}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.total}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                <p>Total Price: ${totalAll}$</p> <!-- Sử dụng biến totalAll thay vì getTotalAll -->
+            </c:if>
+
+            <p>Thank you for shopping with us!</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

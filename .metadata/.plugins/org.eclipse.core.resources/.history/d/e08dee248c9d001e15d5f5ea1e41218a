@@ -1,0 +1,69 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import core.Category;
+import core.Watch;
+import dao.CategoryDAO;
+import dao.WatchDAO;
+
+/**
+ * Servlet implementation class WatchServlet
+ */
+public class WatchServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public WatchServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int page = 1; // Trang mặc định
+
+        String pageStr = request.getParameter("page");
+        if (pageStr != null && !pageStr.isEmpty()) {
+            try {
+                page = Integer.parseInt(pageStr);
+            } catch (NumberFormatException e) {
+                // Xử lý ngoại lệ nếu giá trị trang không hợp lệ
+                e.printStackTrace();
+            }
+        }
+
+        int perPage = 3; // Số lượng sản phẩm trên mỗi trang
+        ArrayList<Watch> listWatch = WatchDAO.getAllProducts(page, perPage);
+
+        // Thêm thông tin phân trang vào request
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", calculateTotalPages(WatchDAO.gettotal(), perPage));
+        request.setAttribute("listWatch", listWatch);
+
+        // Forward request đến trang JSP
+        request.getRequestDispatcher("watchmanagement.jsp").forward(request, response);
+    }
+
+    // Hàm tính tổng số trang dựa trên tổng số sản phẩm và số lượng sản phẩm mỗi trang
+}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

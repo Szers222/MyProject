@@ -34,11 +34,11 @@ public class UserDAO extends DatabaseUtil {
 		int status = 0;
 		try {
 			conn = getConnection();
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO `users_db`(`name`, `username`, `password`, `role`) VALUES (?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO `users_db`(`name`, `username`, `password`) VALUES (?,?,?)");
 			ps.setString(1, user.getName());
 			ps.setString(2, user.getUsername());
 			ps.setString(3, user.getPassword());
-			ps.setInt(4, user.getRole());
+
 			status = ps.executeUpdate();
 			conn.close();
 		} catch (Exception e) {

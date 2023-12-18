@@ -1,0 +1,89 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import core.Watch;
+
+/**
+ * Servlet implementation class CheckoutServlet
+ */
+public class CheckoutServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CheckoutServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		   response.setContentType("text/html");
+	        PrintWriter out = response.getWriter();
+
+	        // Get the session
+	        HttpSession session = request.getSession();
+	        
+	        // Get the cart and total from the session
+	        ArrayList<Watch> cart = (ArrayList<Watch>) session.getAttribute("cart");
+	        double totalAll = (double) session.getAttribute("getTotalAll");
+
+	        // Your checkout logic here (e.g., payment processing, order confirmation, etc.)
+	        // For simplicity, this example just prints out the cart items and total
+
+	        out.println("<html><head><title>Checkout</title></head><body>");
+
+	        out.println("<h1>Checkout</h1>");
+	        out.println("<h2>Order Summary</h2>");
+
+	        out.println("<table border='1'><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>Total</th></tr>");
+
+	        for (Watch item : cart) {
+	            out.println("<tr>");
+	            out.println("<td>" + item.getWatchName() + "</td>");
+	            out.println("<td>" + item.getWatchPrice() + "</td>");
+	            out.println("<td>" + item.getQuantity() + "</td>");
+	            out.println("<td>" + item.getTotal() + "</td>");
+	            out.println("</tr>");
+	        }
+
+	        out.println("</table>");
+	        out.println("<p>Total: $" + totalAll + "</p>");
+
+	        // Clear the session attributes after checkout
+	        session.removeAttribute("cart");
+	        session.removeAttribute("getTotalAll");
+	        session.removeAttribute("size");
+	        session.removeAttribute("watchList");
+
+	        out.println("<p>Thank you for shopping with us!</p>");
+
+	        out.println("</body></html>");
+	        request.getRequestDispatcher("/checkout.jsp").forward(request, response);
+	    }
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

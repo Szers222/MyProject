@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 <style type="text/css">
 
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
@@ -274,66 +276,140 @@ html,body {
 		}
 	}
 }
+.alert-success {
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+      opacity: 1;
+      transition: opacity 2s ease-out;
+    }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oL2XCRpXwe4WuZla22/Q2fIlxzO4w3qjnIHEt3GQnB8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59D1E1iKT6Lh5oIM6jKZ5DfF" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
 
-<div class="form-structor">
-<form action="LoginServlet" method="post">
-	<div class="signup">
-		<h2 class="form-title" id="signup">Sign up</h2>
-		<div class="form-holder">
-			<input type="text" class="input" placeholder="Name" />
-			<input type="email" class="input" placeholder="Username" />
-			<input type="password" class="input" placeholder="Password" />
-		</div>
-		<button class="submit-btn">Sign up</button>
-	</div>
-	<div class="login slide-up">
-		<div class="center">
-			<h2 class="form-title" id="login">Log in</h2>
-			<div class="form-holder">
-				<input type="text" class="input" placeholder="Username" name="username" />
-				<input type="password" class="input" placeholder="Password"  name="password"/>
-			</div>
-			<input class="submit-btn" type="submit" value="Login">
-			
-		</div>
-	</div>
-	</form>
+<% 
+Integer statusAttribute = (Integer) request.getAttribute("status");
+int status = (statusAttribute != null) ? statusAttribute : 0;
+%>
+<body style="min-height: 50vh; border-radius: 100px">
+  <div class="form-structor">
+    <form action="LoginServlet" method="post">
+      <div class="signup">
+        <h2 class="form-title" id="signup">Sign up</h2>
+        <div class="form-holder">
+          <input type="text" class="input" placeholder="Name" name="name" />
+          <input type="text" class="input" placeholder="Username" name="username" />
+          <input type="password" class="input" placeholder="Password" name="password" />
+        </div>
+        <button type="submit" class="submit-btn" id="signupBtn">Sign up</button>
+        <a href="ShowAllProductServlet" type="submit" class="submit-btn" id="signupBtn" style="text-align: center; text-decoration: none;" >Back</a>
+      </div>
+    </form>
+    
+    <form action="LoginServlet" method="post">
+      <div class="login slide-up">
+        <div class="center">
+          <h2 class="form-title" id="login">Log in</h2>
+          <div class="form-holder">
+            <input type="text" class="input" placeholder="Username" name="username" />
+            <input type="password" class="input" placeholder="Password" name="password" />
+          </div>
+          <input class="submit-btn" type="submit" value="Login">
+          <a href="ShowAllProductServlet" type="submit" class="submit-btn" id="signupBtn" style="text-align: center; text-decoration: none;" >Back</a>
+        </div>
+      </div>
+    </form>
+  </div>
 
-</div>
+  <script type="text/javascript">
+    console.clear();
 
+    const loginBtn = document.getElementById('login');
+    const signupBtn = document.getElementById('signup');
+    const signupForm = document.querySelector('.signup');
+    const loginForm = document.querySelector('.login');
 
-<script type="text/javascript">
-console.clear();
+    signupBtn.addEventListener('click', () => {
+        signupForm.classList.remove('slide-up');
+        loginForm.classList.add('slide-up');
+      });
 
-const loginBtn = document.getElementById('login');
-const signupBtn = document.getElementById('signup');
+      loginBtn.addEventListener('click', () => {
+        loginForm.classList.remove('slide-up');
+        signupForm.classList.add('slide-up');
+      });
 
-loginBtn.addEventListener('click', (e) => {
-	let parent = e.target.parentNode.parentNode;
-	Array.from(e.target.parentNode.parentNode.classList).find((element) => {
-		if(element !== "slide-up") {
-			parent.classList.add('slide-up')
-		}else{
-			signupBtn.parentNode.classList.add('slide-up')
-			parent.classList.remove('slide-up')
-		}
-	});
-});
+    function showSuccessAlert() {
+        var alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-success";
+        alertDiv.innerHTML = "Registration successful!";
 
-signupBtn.addEventListener('click', (e) => {
-	let parent = e.target.parentNode;
-	Array.from(e.target.parentNode.classList).find((element) => {
-		if(element !== "slide-up") {
-			parent.classList.add('slide-up')
-		}else{
-			loginBtn.parentNode.parentNode.classList.add('slide-up')
-			parent.classList.remove('slide-up')
-		}
-	});
-});
+        // Thêm thông báo trước thẻ h2 "Signup"
+        var signupTitle = document.getElementById('signup');
+        signupTitle.parentNode.insertBefore(alertDiv, signupTitle);
+
+        // Tự động đặt lại opacity sau 2 giây
+        setTimeout(function() {
+            alertDiv.style.opacity = "0";
+            setTimeout(function() {
+                alertDiv.remove(); // Xóa thông báo sau khi biến mất
+            }, 1000);
+        }, 2000);
+    }
+    function showFailAlert() {
+        var alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-danger";
+        alertDiv.innerHTML = "Your Action Fails!";
+
+        // Thêm thông báo trước thẻ h2 "Signup"
+        var signupTitle = document.getElementById('signup');
+        signupTitle.parentNode.insertBefore(alertDiv, signupTitle);
+
+        // Tự động đặt lại opacity sau 2 giây
+        setTimeout(function() {
+            alertDiv.style.opacity = "0";
+            setTimeout(function() {
+                alertDiv.remove(); // Xóa thông báo sau khi biến mất
+            }, 1000);
+        }, 2000);
+    }
+    function showLogoutAlert() {
+        var alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-success";
+        alertDiv.innerHTML = "Logout successful!";
+
+        // Thêm thông báo trước thẻ h2 "Signup"
+        var signupTitle = document.getElementById('signup');
+        signupTitle.parentNode.insertBefore(alertDiv, signupTitle);
+
+        // Tự động đặt lại opacity sau 2 giây
+        setTimeout(function() {
+            alertDiv.style.opacity = "0";
+            setTimeout(function() {
+                alertDiv.remove(); // Xóa thông báo sau khi biến mất
+            }, 1000);
+        }, 2000);
+    }
+    function resetAlert() {
+        var alertDiv = document.querySelector(".alert");
+        if (alertDiv) {
+            alertDiv.remove(); // Xóa thông báo nếu tồn tại
+        }
+    }
+
+    // Kiểm tra giá trị status
+    <% if(status == 1){ %>
+        showSuccessAlert();
+    <% }else if(status == -1){ %>
+    showLogoutAlert();
+    <% }else if(status == -2){ %>
+    showFailAlert();
+    <%  } %>
+    
+    
 </script>
+
 </body>
 </html>

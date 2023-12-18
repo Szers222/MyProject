@@ -3,6 +3,8 @@ package core;
 public class User {
 	//Fields
 	private String username,password,name;
+	private int role;
+	private int idUser;
 	public String getUsername() {
 		return username;
 	}
@@ -15,8 +17,7 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	private int role;
-	private int idUser;
+	
 	
 	
 	//Properties
@@ -52,6 +53,12 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.role = role;
+	}
+	public User( String username, String password , String name) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
 	}
 	//Method
 	@Override

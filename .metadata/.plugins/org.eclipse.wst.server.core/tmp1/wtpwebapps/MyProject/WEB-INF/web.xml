@@ -139,4 +139,24 @@
     <servlet-name>AddWatchServlet</servlet-name>
     <url-pattern>/AddWatchServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteWatchServlet</display-name>
+    <servlet-name>DeleteWatchServlet</servlet-name>
+    <servlet-class>servlet.DeleteWatchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteWatchServlet</servlet-name>
+    <url-pattern>/DeleteWatchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateWatchServlet</display-name>
+    <servlet-name>UpdateWatchServlet</servlet-name>
+    <servlet-class>servlet.UpdateWatchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateWatchServlet</servlet-name>
+    <url-pattern>/UpdateWatchServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

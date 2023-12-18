@@ -1,0 +1,65 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import core.Category;
+import core.Watch;
+import dao.CategoryDAO;
+import dao.WatchDAO;
+
+/**
+ * Servlet implementation class UpdateWatchServlet
+ */
+public class UpdateWatchServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UpdateWatchServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		int watchId = Integer.parseInt(request.getParameter("id"));
+        String watchName = request.getParameter("name");
+        double watchPrice = Double.parseDouble(request.getParameter("price"));
+        int watchQuantity = Integer.parseInt(request.getParameter("quantity"));
+        String watchDescription = request.getParameter("description");
+        String watchImage = request.getParameter("image");
+        int watchCategoryId = Integer.parseInt(request.getParameter("categoryid"));
+
+        // Thực hiện cập nhật thông tin trong cơ sở dữ liệu hoặc nơi bạn lưu trữ dữ liệu
+        WatchDAO watchDAO = new WatchDAO();
+        Watch watchToUpdate = new Watch(watchName, watchPrice, watchQuantity, watchDescription, watchImage, watchCategoryId);
+        int success = watchDAO.updateProduct(watchToUpdate);
+
+        // Kiểm tra xem cập nhật thành công hay không
+        if (success > 0) {
+            // Nếu thành công, chuyển hướng về trang danh sách sản phẩm hoặc trang chi tiết sản phẩm
+        	ArrayList<Watch> listWatch = WatchDAO.getAllWatch();
+    		request.setAttribute("listWatch", listWatch);
+    		request.getRequestDispatcher("watchmanagement.jsp").forward(request, response);
+}
+    }
+}

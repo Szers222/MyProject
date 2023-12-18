@@ -40,30 +40,34 @@ public class ShowAllProductServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pageParameter = request.getParameter("page");
 		int cpage = (pageParameter != null && !pageParameter.isEmpty()) ? Integer.parseInt(pageParameter) : 1;
-		int perPage = 3;
+		int perPage = 9;
 		ArrayList<Category> listCategory = CategoryDAO.getAllCategory();
-		ArrayList<Watch> listWatch = WatchDAO.getAllProducts(1, perPage);
-		
-		if (id == null) {
-			try {
-				listWatch = WatchDAO.getAllProducts(cpage, perPage);
-			} catch (Exception e) {
-				System.out.println("Loi ne" + e);
-			}
-		} else {
-			try {
-				int idWatch = Integer.parseInt(id);
+		ArrayList<Watch> listWatch = new ArrayList<>();
 
-				listWatch = WatchDAO.getAllProductsByCategoryId(idWatch, cpage, perPage);
-			} catch (Exception e) {
-				System.out.println("Loi ne " + e);
-			}
+		if (id == null || !id.matches("\\d+")) {
+		    try {
+		        // Lấy danh sách tất cả sản phẩm
+		        listWatch = WatchDAO.getAllProducts(cpage, perPage);
+		    } catch (Exception e) {
+		        System.out.println("Loi ne" + e);
+		    }
+		} else {
+		    try {
+		        int idWatch = Integer.parseInt(id);
+
+		        // Lấy danh sách sản phẩm theo danh mục
+		        listWatch = WatchDAO.getAllProductsByCategoryId(idWatch, cpage, perPage);
+		    } catch (Exception e) {
+		        System.out.println("Loi ne " + e);
+		    }
 		}
+
 		request.setAttribute("perPage", perPage);
 		request.setAttribute("id", id);
 		request.setAttribute("listWatch", listWatch);
 		request.setAttribute("listCategory", listCategory);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
+		
 	}
 
 	/**

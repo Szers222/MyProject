@@ -1,0 +1,66 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import core.Watch;
+
+/**
+ * Servlet implementation class CheckoutServlet
+ */
+public class CheckoutServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CheckoutServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		   response.setContentType("text/html");
+		   HttpSession session = request.getSession();
+	        ArrayList<Watch> cart = (ArrayList<Watch>) session.getAttribute("cart");
+
+	        if (cart != null && !cart.isEmpty()) {
+	            // Thực hiện xử lý thanh toán và lưu đơn hàng
+	            // Ở đây, tôi giả sử giá trị tổng là đã được tính toán trước đó
+	            double totalAmount = (Double) session.getAttribute("getTotalAll");
+
+	            // Thực hiện các bước thanh toán, lưu đơn hàng vào cơ sở dữ liệu, ...
+	            // Đây là nơi để tích hợp với các dịch vụ thanh toán của bên thứ ba hoặc xử lý thanh toán theo cách khác.
+
+	            // Xóa giỏ hàng sau khi thanh toán thành công
+	            session.removeAttribute("cart");
+	            session.removeAttribute("size");
+	            session.removeAttribute("watchList");
+	            session.removeAttribute("getTotalAll");
+
+	            // Chuyển hướng đến trang xác nhận
+	            response.sendRedirect("confirmation.jsp");
+	        } 
+		   	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

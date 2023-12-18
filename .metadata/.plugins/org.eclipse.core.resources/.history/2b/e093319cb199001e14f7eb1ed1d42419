@@ -1,0 +1,117 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import core.Category;
+import core.Watch;
+import dao.WatchDAO;
+
+/**
+ * Servlet implementation class CartServlet
+ */
+public class CartServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CartServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String id = request.getParameter("id");
+		String action = request.getParameter("action");
+		String totalAllParam = request.getParameter("total");
+		double getTotalAll = 0; // Giá trị mặc định hoặc bất kỳ giá trị mặc định phù hợp khác
+
+		if (totalAllParam != null && !totalAllParam.trim().isEmpty()) {
+			try {
+			    int xid = Integer.parseInt(id);
+
+			    HttpSession sessionCart = request.getSession();
+			    ArrayList<Watch> cart = (ArrayList<Watch>) sessionCart.getAttribute("cart");
+
+			    if (cart == null) {
+			        cart = new ArrayList<>();
+			        sessionCart.setAttribute("cart", cart);
+			    }
+			    Watch watch = WatchDAO.getProductById(xid);
+
+			    if (watch != null) {
+			        if (action != null && action.equals("remove")) {
+			            // Xử lý xóa sản phẩm
+			            // ...
+			        } else if (action != null && action.equals("updateQuantity")) {
+			            // Xử lý cập nhật số lượng
+			            String quantity = request.getParameter("quantity");
+			            int newQuantity = Integer.parseInt(quantity);
+
+			            for (Watch cartWatch : cart) {
+			                if (cartWatch.getWatchId() == xid) {
+			                    // Cập nhật số lượng và tổng của sản phẩm
+			                    cartWatch.setQuantity(newQuantity);
+			                    cartWatch.setTotal(cartWatch.getWatchPrice() * newQuantity);
+			                    break;
+			                }
+			            }
+
+			            // Cập nhật tổng chung của giỏ hàng
+			            double totalAll = 0;
+			            for (Watch cartWatch : cart) {
+			                totalAll += cartWatch.getTotal();
+			            }
+			            sessionCart.setAttribute("getTotalAll", totalAll);
+			        } else {
+			            // Xử lý thêm sản phẩm vào giỏ hàng
+			            // ...
+			        }
+
+			        int size = cart.size();
+
+			        // Đặt giỏ hàng được cập nhật vào phiên
+			        sessionCart.setAttribute("cart", cart);
+			        sessionCart.setAttribute("size", size);
+			        // Đặt watchList trong yêu cầu để sử dụng trong JSP
+			        sessionCart.setAttribute("watchList", cart);
+			        sessionCart.setAttribute("getTotalAll", getTotalAll);
+			    }
+
+			    response.sendRedirect("index.jsp");
+
+			} catch (Exception e) {
+			    // TODO: xử lý ngoại lệ
+			}
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

@@ -187,8 +187,10 @@
 						<div class="col-lg-4 col-sm-12 mb-4">
 							<div class="card border-none me-3">
 								<div class="card-image">
-									<a href="ShowDetailProductServlet?id=${item.watchId}"><img src="images/post-item1.jpg" alt="" class="img-fluid"></a>
-								</div>
+								<a href="ShowDetailProductServlet?id=${item.watchId}">
+								<img src="data:image/jpg;base64,${item.base64Image}" alt="" class="img-fluid"></a>
+								
+							</div>
 								<div
 									class="card-body text-uppercase d-flex flex-column align-items-start">
 									<div class="card-meta text-muted">
@@ -218,11 +220,4 @@
 			</div>
 		</div>
 	</section>
-		<%@ include file="footer.jsp" %>  
-	<script src="js/jquery-1.11.0.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="js/plugins.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
-</body>
-</html>
+<%@ include file="footer.jsp" %>  

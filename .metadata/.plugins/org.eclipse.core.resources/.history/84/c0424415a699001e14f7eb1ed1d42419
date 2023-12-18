@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add any additional styles or scripts as needed -->
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-5">Order Confirmation</h1>
+
+    <div class="mt-4">
+        <h4>Thank you for your order, <%= order.getFirstName() %> <%= order.getLastName() %>!</h4>
+        <p>Your order has been successfully placed.</p>
+
+        <h5>Order Details:</h5>
+        <ul>
+            <c:forEach items="${order.getCart()}" var="item">
+                <li>${item.getWatchName()} - ${item.getQuantity()} items - $${item.getTotal()}</li>
+            </c:forEach>
+        </ul>
+
+        <p>Total Amount: $<%= order.getTotal() %></p>
+
+        <!-- Add any additional information you want to display -->
+
+        <p>For any inquiries, please contact our customer support.</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Add any additional scripts as needed -->
+</body>
+</html>

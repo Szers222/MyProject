@@ -1,0 +1,70 @@
+package servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * Servlet implementation class PaymentServlet
+ */
+public class PaymentServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PaymentServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		try {
+            // Lấy thông tin từ form checkout.jsp
+            String cardNumber = request.getParameter("cardNumber");
+            String expirationDate = request.getParameter("expirationDate");
+            String cvv = request.getParameter("cvv");
+
+            // Lấy danh sách sản phẩm từ session
+            HttpSession session = request.getSession();
+            ArrayList<Watch> watchList = (ArrayList<Watch>) session.getAttribute("watchList");
+            Double getTotalAll = (Double) session.getAttribute("getTotalAll");
+
+            // Kiểm tra xem có sản phẩm và tổng giá trị không
+            if (watchList != null && getTotalAll != null) {
+                // Thực hiện các bước xử lý thanh toán, chẳng hạn lưu thông tin thanh toán vào cơ sở dữ liệu
+
+                // Xóa thông tin giỏ hàng khỏi session sau khi thanh toán thành công
+                session.removeAttribute("watchList");
+                session.removeAttribute("getTotalAll");
+
+                // Chuyển hướng đến trang xác nhận thanh toán
+                response.sendRedirect("confirmation.jsp");
+            } else {
+                // Nếu không có sản phẩm hoặc tổng giá trị, chuyển hướng về trang checkout
+                response.sendRedirect("checkout.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Xử lý ngoại lệ
+        }
+	}
+
+}

@@ -2,10 +2,8 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="com.oracle.wls.shaded.org.apache.regexp.recompile"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="dao.UserDAO"/>
     <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxDatatypes.Array"/>
     <fullyQualifiedTypeName name="com.oracle.wls.shaded.org.apache.xalan.xsltc.compiler.sym"/>
     <fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
@@ -13,16 +11,32 @@
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="dao.ProductDAO"/>
     <fullyQualifiedTypeName name="core.Product"/>
     <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="core.Category"/>
     <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebServlet"/>
-    <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="dao.CategoryDAO"/>
-    <fullyQualifiedTypeName name="core.Watch"/>
     <fullyQualifiedTypeName name="dao.WatchDAO"/>
+    <fullyQualifiedTypeName name="core.User"/>
+    <fullyQualifiedTypeName name="dao.UserDAO"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxCrud.Order"/>
+    <fullyQualifiedTypeName name="core.Order"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.Double"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.util.Base64"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.jdbc.Blob"/>
+    <fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
+    <fullyQualifiedTypeName name="java.sql.Blob"/>
+    <fullyQualifiedTypeName name="byte"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.Part"/>
+    <fullyQualifiedTypeName name="java.io.InputStream"/>
+    <fullyQualifiedTypeName name="core.Watch"/>
 </qualifiedTypeNameHistroy>

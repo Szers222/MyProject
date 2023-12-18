@@ -1,0 +1,48 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="core.Watch"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <!-- Các thẻ meta và các tài nguyên khác cần thiết -->
+</head>
+<body>
+
+    <div class="container">
+        <h2>Checkout</h2>
+
+        <!-- Form nhập thông tin thanh toán -->
+        <form action="PaymentServlet" method="post">
+            <!-- Các trường thông tin thanh toán, ví dụ: -->
+            <label for="cardNumber">Credit Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required>
+
+            <label for="expirationDate">Expiration Date:</label>
+            <input type="text" id="expirationDate" name="expirationDate" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+
+            <!-- Danh sách sản phẩm để xác nhận lại cho người dùng -->
+            <h3>Order Summary</h3>
+            <c:forEach items="${watchList}" var="item">
+                <div>
+                    <strong>${item.watchName}</strong>
+                    <p>Quantity: ${item.getQuantity()}</p>
+                    <p>Price: $${item.watchPrice}</p>
+                    <p>Total: $${item.getTotal()}</p>
+                </div>
+                <hr>
+            </c:forEach>
+
+            <h3>Total Amount: $${getTotalAll}</h3>
+
+            <!-- Nút thanh toán -->
+            <button type="submit">Proceed to Payment</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

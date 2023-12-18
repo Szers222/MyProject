@@ -34,7 +34,7 @@ public class ShowDetailProductServlet extends HttpServlet {
 		Watch watch = null;
 		if(id != null) {
 			int sId = Integer.parseInt(id);
-			 watch = WatchDAO.getProductById(sId);
+			 watch = WatchDAO.getWatchById(sId);
 		}
 		request.setAttribute("watch", watch);
 		request.getRequestDispatcher("productdetail.jsp").forward(request, response);
