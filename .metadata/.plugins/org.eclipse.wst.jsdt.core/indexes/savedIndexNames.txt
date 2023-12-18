@@ -1,9 +1,7 @@
 INDEX VERSION 1.4+C:\Users\szers\OneDrive\Máy tính\MyProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2011842663.index
-935568407.index
-935568407.index
-3400312260.index
-128466289.index
-2701284951.index
 3933240181.index
 139181143.index
+128466289.index
+2011842663.index
+3400312260.index
+2701284951.index

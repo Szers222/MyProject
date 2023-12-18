@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="watchName"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
-			<item value="watchName"/>
-			<item value="name=&quot;id&quot;"/>
-			<item value="Edit"/>
-			<item value="id"/>
-			<item value="watch"/>
-			<item value="sys"/>
-			<item value="sy"/>
-			<item value="getAll"/>
+			<item value="Check"/>
+			<item value="buy"/>
 			<item value="img"/>
+			<item value="ceil"/>
+			<item value="clearfix"/>
+			<item value="description"/>
+			<item value="add"/>
+			<item value="Catego"/>
+			<item value="search"/>
+			<item value="Search"/>
+			<item value="section"/>
 			<item value="watchImage"/>
-			<item value="watchImage;"/>
-			<item value="insert"/>
-			<item value="in"/>
-			<item value="addEmployeeModal"/>
-			<item value="Add"/>
+			<item value="image"/>
+			<item value="img-thumbnail"/>
+			<item value="update"/>
 		</list>
 		<list key="replacehistory">
 			<item value="imageBytes"/>
@@ -35,8 +35,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1512"/>
-		<item key="DIALOG_Y_ORIGIN" value="285"/>
+		<item key="DIALOG_X_ORIGIN" value="510"/>
+		<item key="DIALOG_Y_ORIGIN" value="415"/>
 		<item key="DIALOG_WIDTH" value="414"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

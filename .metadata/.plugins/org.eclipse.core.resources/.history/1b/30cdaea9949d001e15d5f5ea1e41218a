@@ -286,7 +286,7 @@ body {
 						shopping
 					</a>
 					<% String username = (String) session.getAttribute("username"); %> 
-					<a href="${username != null ? 'checkout.jsp?id=' : 'login.jsp'}" class="btn btn-warning shadow-0"> Check out </a>
+					<a href="${username != null ? 'checkout.jsp' : 'login.jsp'}" class="btn btn-warning shadow-0"> Check out </a>
 				</div>
 
 			</div>
